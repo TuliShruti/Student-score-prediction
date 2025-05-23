@@ -97,6 +97,8 @@ jobs:
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_NAME }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
+          set -x
+          echo "IMAGE: $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG"
           docker run -d -p 8080:8080 --ipc="host" --name=mltest \
             -e AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} \
             -e AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} \
@@ -105,3 +107,5 @@ jobs:
 
       - name: Clean up unused Docker data
         run: docker system prune -af
+
+        
