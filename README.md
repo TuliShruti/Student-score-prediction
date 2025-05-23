@@ -1,1 +1,1 @@
-## Machine Learning project tutorial
+## Machine Learning project (student score prediction)
